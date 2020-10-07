@@ -43,9 +43,7 @@ public class CacheableControllerA {
     @PostMapping(value = "/unconditional/{value}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     @CacheEvict(cacheNames = "sample-redis-cache", key = "#value")
-    public ResponseA backendAUpdate(
-            @PathVariable final String value,
-            @RequestBody final ResponseAUpdate updateRequest) {
+    public ResponseA backendAUpdate(@PathVariable final String value, @RequestBody final ResponseAUpdate updateRequest) {
         final ResponseA result = backendServiceA.getBy(value);
         result.setValue(updateRequest.getNewValue());
         return result;
