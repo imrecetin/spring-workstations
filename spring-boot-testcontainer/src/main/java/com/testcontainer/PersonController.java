@@ -5,12 +5,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/persons")
-public class PersonsController {
+@RequestMapping("/api/person")
+public class PersonController {
 
     private final PersonRepository personRepository;
 
-    public PersonsController(PersonRepository personRepository) {
+    public PersonController(PersonRepository personRepository) {
         this.personRepository = personRepository;
     }
 
