@@ -15,13 +15,13 @@ public class TestPostgresContainer extends PostgreSQLContainer<TestPostgresConta
         if (container == null) {
             container = new TestPostgresContainer();
         }
-        container.withDatabaseName("integration-tests-db");
         return container;
     }
 
     @Override
     public void start() {
         super.start();
+        System.out.println("DB_URL "+container.getJdbcUrl());
         System.setProperty("DB_URL", container.getJdbcUrl());
         System.setProperty("DB_USERNAME", container.getUsername());
         System.setProperty("DB_PASSWORD", container.getPassword());
