@@ -1,13 +1,13 @@
-package com.testcontainer.springboottestcontainer;
+package com.testcontainer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringBootTestcontainerApplication {
+public class SpringBootTestContainerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootTestcontainerApplication.class, args);
+		SpringApplication.run(SpringBootTestContainerApplication.class, args);
 	}
 
 }
