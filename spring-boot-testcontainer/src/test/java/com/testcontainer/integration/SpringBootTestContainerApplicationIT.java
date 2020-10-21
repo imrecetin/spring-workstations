@@ -16,7 +16,8 @@ class SpringBootTestContainerApplicationIT {
 	@Container
 	public static PostgreSQLContainer postgreSQLContainer = new PostgreSQLContainer()
 			.withPassword("inmemory")
-			.withUsername("inmemory");
+			.withUsername("inmemory")
+			.withDatabaseName("integration-tests-db");
 
 	@DynamicPropertySource
 	static void postgresqlProperties(DynamicPropertyRegistry registry) {

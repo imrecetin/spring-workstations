@@ -24,7 +24,8 @@ public class PersonControllerIT {
     @Container
     public static PostgreSQLContainer postgreSQLContainer = new PostgreSQLContainer()
             .withPassword("inmemory")
-            .withUsername("inmemory");
+            .withUsername("inmemory")
+            .withDatabaseName("integration-tests-db");
 
     @Autowired
     private PersonRepository personRepository;
