@@ -1,4 +1,4 @@
-version: "3.5"
+version: "3.8"
 
 services:
   # Install postgres and setup the order database.
@@ -16,7 +16,7 @@ services:
     container_name: postgres_shipment
     image: debezium/postgres
     ports:
-      - 5432:5432
+      - 5433:5432
     environment:
       - POSTGRES_DB=shipmentdb
       - POSTGRES_USER=shipment_user
