@@ -8,11 +8,11 @@
 		<version>2.4.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.outboxpattern</groupId>
-	<artifactId>Spring-Boot-Outbox-Pattern</artifactId>
+	<groupId>com.outboxpattern.order</groupId>
+	<artifactId>Spring-Boot-Outbox-Pattern-Order</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Spring-Boot-Outbox-Pattern</name>
-	<description>Demo project for Spring Boot Outbox Pattern With Kafka Connector</description>
+	<name>Spring-Boot-Outbox-Pattern-Order</name>
+	<description>Demo project for Spring Boot Outbox Pattern Order With Kafka Connector</description>
 
 	<properties>
 		<java.version>1.8</java.version>

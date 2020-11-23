@@ -1,0 +1,13 @@
+package com.outboxpattern.shipment;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class SpringBootOutboxPatternShipmentApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}

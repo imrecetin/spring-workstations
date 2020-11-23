@@ -1,10 +1,10 @@
-package com.outboxpattern;
+package com.outboxpattern.order;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringBootOutboxPatternApplicationTests {
+class SpringBootOutboxPatternOrderApplicationTests {
 
 	@Test
 	void contextLoads() {
