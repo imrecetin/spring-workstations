@@ -1,1 +1,46 @@
+## Server properties
+server:
+  port: 8081
 
+## Database properties
+spring:
+  datasource:
+    hikari:
+      connectionTimeout: 20000
+      maximumPoolSize: 5
+    url: jdbc:postgresql://localhost:5433/shipmentdb
+    username: shipment_user
+    password: shipment_password
+    initialization-mode: always
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          lob:
+            non_contextual_creation: true
+
+## Logging properties
+logging:
+  file:
+    name: logs/shipment.log
+  level:
+    com:
+      capitalone:
+        auto:
+          loans: INFO
+    org:
+      springframework:
+        web: INFO
+
+## Actuator config
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics
+  endpoint:
+    health:
+      show-details: always
+    metrics:
+      enabled: true
