@@ -4,6 +4,9 @@ server:
 
 ## Database properties
 spring:
+  liquibase:
+    change-log: classpath:db/changelog/liquibase-changeLog.xml
+    enabled: true
   datasource:
     hikari:
       connectionTimeout: 20000
@@ -48,5 +51,4 @@ management:
     metrics:
       enabled: true
 
-liquibase:
-  change-log: liquibase-changeLog.xml
+
