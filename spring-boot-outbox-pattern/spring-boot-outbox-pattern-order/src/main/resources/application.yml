@@ -15,10 +15,13 @@ spring:
   jpa:
     properties:
       hibernate:
+        ddl-auto: none
+        format_sql: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
         jdbc:
           lob:
             non_contextual_creation: true
+    show-sql: true
 
 ## Logging properties
 logging:
@@ -44,3 +47,6 @@ management:
       show-details: always
     metrics:
       enabled: true
+
+liquibase:
+  change-log: liquibase-changeLog.xml
