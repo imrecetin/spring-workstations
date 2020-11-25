@@ -4,16 +4,21 @@ server:
 
 ## Database properties
 spring:
+  application:
+    name: order_service
   liquibase:
     change-log: classpath:db/changelog/liquibase-changeLog.xml
     enabled: true
+    default-schema: ordersch
   datasource:
+    platform: postgres
     hikari:
       connectionTimeout: 20000
       maximumPoolSize: 5
-    url: jdbc:postgresql://localhost:5432/orderdb
-    username: order_user
-    password: order_password
+    url: jdbc:postgresql://localhost:5432/ecommercedb?currentSchema=ordersch
+    username: ecommerce_user
+    password: ecommerce_password
+    driver-class-name: org.postgresql.Driver
     initialization-mode: always
   jpa:
     properties:
@@ -25,6 +30,8 @@ spring:
           lob:
             non_contextual_creation: true
     show-sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
 
 ## Logging properties
 logging:

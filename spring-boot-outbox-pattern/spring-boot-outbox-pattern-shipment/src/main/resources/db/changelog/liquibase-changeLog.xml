@@ -8,7 +8,7 @@
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
     <changeSet author="Cetin Imre" id="order-ci-01">
-        <createTable tableName="shipment">
+        <createTable tableName="shipment" schemaName="shipmentsch">
             <column name="id" type="serial" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true"/>
             </column>

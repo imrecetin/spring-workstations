@@ -1,19 +1,24 @@
 ## Server properties
 server:
-  port: 8081
+  port: 8080
 
 ## Database properties
 spring:
+  application:
+    name: shipment_service
   liquibase:
     change-log: classpath:db/changelog/liquibase-changeLog.xml
     enabled: true
+    default-schema: shipmentsch
   datasource:
+    platform: postgres
     hikari:
       connectionTimeout: 20000
       maximumPoolSize: 5
-    url: jdbc:postgresql://localhost:5433/shipmentdb
-    username: shipment_user
-    password: shipment_password
+    url: jdbc:postgresql://localhost:5432/ecommercedb?currentSchema=shipmentsch
+    username: ecommerce_user
+    password: ecommerce_password
+    driver-class-name: org.postgresql.Driver
     initialization-mode: always
   jpa:
     properties:
@@ -25,6 +30,8 @@ spring:
           lob:
             non_contextual_creation: true
     show-sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
 
 ## Logging properties
 logging:
@@ -50,3 +57,5 @@ management:
       show-details: always
     metrics:
       enabled: true
+
+

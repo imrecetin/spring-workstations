@@ -1,7 +1,7 @@
 docker-compose up -d
 
-docker exec -it postgres_order psql -U order_user -W orderdb
-docker exec -it postgres_shipment psql -U shipment_user -W shipmentdb
+docker exec -it postgres_ecommercedb_order psql -U ecommerce_user -W ecommercedb
+docker exec -it postgres_ecommercedb_shipment psql -U ecommerce_user -W ecommercedb
 
 \? list all the commands
 \l list databases
@@ -13,5 +13,8 @@ docker exec -it postgres_shipment psql -U shipment_user -W shipmentdb
 Then you can run SQL statements, e.g., SELECT * FROM my_table;(Note: a statement must be terminated with semicolon ;)
 \q quit psql
 
-select * from public.databasechangelog;
-select * from public.order;
+select * from ordersch.databasechangelog;
+select * from ordersch.order;
+
+select * from shipmentsch.databasechangelog;
+select * from shipmentsch.shipment;
