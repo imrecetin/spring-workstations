@@ -24,4 +24,30 @@
         </rollback>
     </changeSet>
 
+    <changeSet author="Cetin Imre" id="shipmentsch-ci-02">
+        <createTable tableName="outbox" schemaName="shipmentsch">
+            <column name="uuid" type="varchar(255)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="aggregatetype" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="aggregateid" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="payload" type="jsonb">
+                <constraints nullable="false"/>
+            </column>
+            <column name="createdOn" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="outbox"/>
+        </rollback>
+    </changeSet>
+
 </databaseChangeLog>
