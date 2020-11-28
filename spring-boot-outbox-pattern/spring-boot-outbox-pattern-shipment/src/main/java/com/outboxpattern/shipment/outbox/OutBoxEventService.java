@@ -1,8 +1,8 @@
 package com.outboxpattern.shipment.outbox;
 
-import com.outboxpattern.shipment.outbox.dao.OutBoxRepository;
 import com.outboxpattern.shipment.outbox.models.OutBox;
 import com.outboxpattern.shipment.outbox.models.OutboxEvent;
+import com.outboxpattern.shipment.outbox.repository.OutBoxRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;

@@ -1,4 +1,4 @@
-package com.outboxpattern.shipment.outbox.dao;
+package com.outboxpattern.shipment.outbox.repository;
 
 import com.outboxpattern.shipment.outbox.models.OutBox;
 import org.springframework.data.jpa.repository.JpaRepository;
