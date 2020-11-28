@@ -18,7 +18,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "order")
+@Table(name = "order",schema="ordersch")
 public class Order {
 
     @Id
@@ -30,6 +30,7 @@ public class Order {
     private String orderName;
 
     @Column(name = "created_on")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date createdOn;
 
     public OutboxEvent createOrderEvent() {

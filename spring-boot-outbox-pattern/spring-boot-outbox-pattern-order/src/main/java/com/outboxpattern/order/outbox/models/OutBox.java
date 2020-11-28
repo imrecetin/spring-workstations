@@ -1,12 +1,12 @@
 package com.outboxpattern.order.outbox.models;
 
-import com.fasterxml.jackson.annotation.JsonRawValue;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -17,7 +17,8 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "outbox")
+@Table(name = "outbox",schema="ordersch")
+@TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
 public class OutBox {
 
     @Id
@@ -33,19 +34,12 @@ public class OutBox {
     @Column(name = "type")
     private String type;
 
-    @JsonRawValue
+    @Type(type = "jsonb")
     @Column(name = "payload")
     private String payload;
 
     @Column(name = "created_on")
     private Date createdOn;
-
-    @PostLoad
-    public void afterLoad() throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
-        String  payload = mapper.readValue(this.getPayload(), String.class);
-        this.payload=payload;
-    }
 
     public OutBox outBoxEvent(OutboxEvent event){
         this.aggregateId=event.getAggregateId();
