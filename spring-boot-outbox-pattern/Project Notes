@@ -52,6 +52,4 @@ you will have an audit of all changes made. One example of metadata that may be 
 Debezium tails the transaction log ("write-ahead log", WAL) of the order service’s Postgres database in order to capture
 any new events in the outbox table and propagates them to Apache Kafka.
 
-
-
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------

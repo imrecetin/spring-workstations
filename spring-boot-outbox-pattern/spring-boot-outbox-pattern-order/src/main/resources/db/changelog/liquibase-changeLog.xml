@@ -7,6 +7,9 @@
    http://www.liquibase.org/xml/ns/dbchangelog
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
+    <property name="uuid_type" value="uuid"  dbms="postgresql"/>
+    <property name="uuid_function" value="uuid_generate_v4()" dbms="postgresql"/>
+
     <!-- Changes to include -->
     <include file="/db/changelog/changes/app_init.sql"/>
 
@@ -18,6 +21,9 @@
             <column name="order_name" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
+            <column name="created_on" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
         <rollback>
             <dropTable tableName="order"/>
@@ -26,13 +32,13 @@
 
     <changeSet author="Cetin Imre" id="ordersch-ci-02">
         <createTable tableName="outbox" schemaName="ordersch">
-            <column name="uuid" type="varchar(255)">
+            <column name="uuid" type="${uuid_type}" defaultValueComputed="${uuid_function}">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
-            <column name="aggregatetype" type="varchar(255)">
+            <column name="aggregate_type" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="aggregateid" type="varchar(255)">
+            <column name="aggregate_id" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
             <column name="type" type="varchar(255)">
@@ -41,7 +47,7 @@
             <column name="payload" type="jsonb">
                 <constraints nullable="false"/>
             </column>
-            <column name="createdOn" type="timestamp">
+            <column name="created_on" type="timestamp">
                 <constraints nullable="false"/>
             </column>
         </createTable>

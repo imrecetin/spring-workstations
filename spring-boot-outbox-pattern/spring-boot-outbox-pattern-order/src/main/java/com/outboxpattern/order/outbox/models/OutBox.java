@@ -1,14 +1,14 @@
 package com.outboxpattern.order.outbox.models;
 
+import com.fasterxml.jackson.annotation.JsonRawValue;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.UUID;
 
@@ -24,18 +24,34 @@ public class OutBox {
     @Column(name = "uuid")
     private UUID uuid;
 
-    @Column(name = "aggregateid")
+    @Column(name = "aggregate_id")
     private String aggregateId;
 
-    @Column(name = "aggregatetype")
+    @Column(name = "aggregate_type")
     private String aggregatetype;
 
     @Column(name = "type")
     private String type;
 
+    @JsonRawValue
     @Column(name = "payload")
     private String payload;
 
-    @Column(name = "createdOn")
+    @Column(name = "created_on")
     private Date createdOn;
+
+    @PostLoad
+    public void afterLoad() throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        String  payload = mapper.readValue(this.getPayload(), String.class);
+        this.payload=payload;
+    }
+
+    public OutBox outBoxEvent(OutboxEvent event){
+        this.aggregateId=event.getAggregateId();
+        this.aggregatetype=event.getAggregateType();
+        this.payload=event.getPayload().toPrettyString();
+        this.type=event.getType();
+        return this;
+    }
 }

@@ -1,6 +1,6 @@
 package com.outboxpattern.order.outbox;
 
-import com.outboxpattern.order.outbox.dao.OutBoxRepository;
+import com.outboxpattern.order.outbox.repository.OutBoxRepository;
 import com.outboxpattern.order.outbox.models.OutBox;
 import com.outboxpattern.order.outbox.models.OutboxEvent;
 import lombok.extern.slf4j.Slf4j;
@@ -24,12 +24,9 @@ public class OutBoxEventService {
 
     @EventListener
     public void handleOutboxEvent(OutboxEvent event) {
-
         UUID uuid = UUID.randomUUID();
-        final OutBox outbox = OutBox.builder().uuid(uuid).build();
-
+        final OutBox outbox = OutBox.builder().uuid(uuid).createdOn(new Date()).build().outBoxEvent(event);
         log.info("Handling event : {}.", outbox);
-
         outBoxRepository.save(outbox);
         /*
          * Delete the event once written, so that the outbox doesn't grow.
