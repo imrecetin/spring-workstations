@@ -1,4 +1,5 @@
 docker-compose up -d
+docker-compose up --build -d 
 docker-compose down
 
 docker exec -it postgres_ecommercedb_order psql -U ecommerce_user -W ecommercedb
