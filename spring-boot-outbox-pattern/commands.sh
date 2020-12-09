@@ -1,9 +1,18 @@
 docker-compose up -d
-docker-compose up --build -d 
+docker-compose up --build -d
 docker-compose down
+
+docker exec -it postgres_ecommercedb_order /bin/bash
+docker exec -it postgres_ecommercedb_shipment /bin/bash
+psql -h localhost -p 5432 -U ecommerce_user -d ecommerce_password
 
 docker exec -it postgres_ecommercedb_order psql -U ecommerce_user -W ecommercedb
 docker exec -it postgres_ecommercedb_shipment psql -U ecommerce_user -W ecommercedb
+
+docker exec -it kafka
+# Make sure you are in the Kafka directory before running this command.
+bin/kafka-topics.sh --list --bootstrap-server localhost:9092
+
 
 \? list all the commands
 \l list databases
